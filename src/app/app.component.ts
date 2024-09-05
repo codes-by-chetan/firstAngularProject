@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { addIcons } from "ionicons";
+import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { HousingLocationComponent } from "./pages/housing-location/housing-location.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HomePageComponent, HousingLocationComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
