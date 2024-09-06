@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { HousingService } from '../../services/housing.service';
+import { HousingService } from '../../services/housingService/housing.service';
 import { HousingLocation } from '../../interface/housinglocation';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';

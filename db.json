@@ -100,6 +100,26 @@
       "wifi": true,
       "laundry": true
     }
+  ],
+  "Users" : [
+    {
+      "id":1,
+      "userName" : "ChetanM",
+      "password" :  "1234",
+      "type" : "Admin",
+      "email" : "chetan@abc.com",
+      "firstName" : "Chetan",
+      "lastName" : "Mohite"
+    },
+    {
+      "id":1,
+      "userName" : "Chetan",
+      "password" :  "123",
+      "type" : "Admin",
+      "email" : "chetan@abc.com",
+      "firstName" : "Chetan",
+      "lastName" : "Mohite"
+    }
   ]
   
 }
