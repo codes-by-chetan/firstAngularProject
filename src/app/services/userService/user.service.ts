@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, LoggedUser, AuthenticationResponse } from '../../interface/user';
+import { User, LoggedUser, AuthenticationResponse, UserDetails, RegistrationResponse } from '../../interface/user';
 import { resourceLimits } from 'worker_threads';
 import { log } from 'console';
 
@@ -11,6 +11,8 @@ export class UserService {
   user!: User;
   loggedUser!: LoggedUser;
   authenticationResponse!: AuthenticationResponse;
+  registeredUser!: User | void;
+  error!: any;
   url = 'http://localhost:3000/Users';
 
   async getAllUsers(): Promise<User[]> {
@@ -59,6 +61,37 @@ export class UserService {
 
     return this.authenticationResponse
   };
+
+  async AddNewUser(newUser: UserDetails){
+
+    const users = await this.getAllUsers();
+    let registrationResponse: RegistrationResponse = {
+      result: false,
+      message: "Not Executed"
+    };
+    for (let i=0; i<users.length; i++){
+      if (users[i].userName == newUser.userName){
+        registrationResponse.message = "User Name Has Already Been Taken Please Try Again With Different One";
+          return registrationResponse
+      } else if (users[i].email == newUser.email){
+        registrationResponse.message = "This Email is already associated with an account";
+        return  registrationResponse
+      }
+    }
+
+    const id = users.length + 1;
+    const user: User = {id: id, ...newUser};
+    const newUserReg = fetch('http://localhost:3000/Users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    })
+    registrationResponse.result = true;
+    registrationResponse.message = "User Registration Successfull Please Login";
+    return registrationResponse;
+  }
 
   // async Authenticate(
   //   userName: string,

@@ -1,4 +1,33 @@
-<div class="container-login">
+<div class="main">  	
+	<input type="checkbox" id="chk" aria-hidden="true" [(ngModel)]="IsLoginChecked">
+
+		<div class="signup" >
+			<form [formGroup]="signUpForm" (submit)="submitSignUp()">
+				<label for="chk" aria-hidden="true">Sign up</label>
+				<input type="text" name="firstName" placeholder="First name" required="" formControlName="firstName">
+				<input type="text" name="lastName" placeholder="Last name" required="" formControlName="lastName">
+				<input type="text" name="userName" placeholder="User name" required="" formControlName="userName">
+				<input type="email" name="email" placeholder="Email" required="" formControlName="email">
+				<input type="password" name="pswd" placeholder="Password" required="" formControlName="password">
+				<button [disabled]="!signUpForm.valid">Sign up</button>
+			</form>
+		</div>
+
+		<div class="login">
+			<form class="login-form" [formGroup]="loginForm" (submit)="submitLogin()">
+				<label for="chk" aria-hidden="true">Login</label>
+				<input type="text" name="userName" placeholder="User Name" required="" formControlName="userName">
+				<input type="password" name="pswd" placeholder="Password" required="" formControlName="password">
+				<button>Login</button>
+			</form>
+		</div>
+</div>
+
+
+
+
+
+<!-- <div class="container-login">
 	<div class="screen">
 		<div class="screen__content">
 			<form class="login" [formGroup]="loginForm" (submit)="submitLogin()">
@@ -23,4 +52,4 @@
 			<span class="screen__background__shape screen__background__shape1"></span>
 		</div>		
 	</div>
-</div>
+</div> -->

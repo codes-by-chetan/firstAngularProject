@@ -21,3 +21,6 @@
     color: white;
     border-radius: 8px;
   }
+  button.disabled {
+    background: var(--secondary-color);
+  }

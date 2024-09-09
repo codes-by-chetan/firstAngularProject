@@ -2,11 +2,13 @@
   <a [routerLink]="['/']">
     <header class="brand-name">
       <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
-      <button class="primary" type="button" (click)="toggleLogin(isLoginEnabled)">Login</button>
+      @if (!isUserLoggedIn) {
+        <button class="primary" [ngClass]="isUserLoggedIn ? 'disabled' : ''" type="button" (click)="toggleLogin(isLoginEnabled, false)">Login</button>
+      }
     </header>
   </a>
   @if (isLoginEnabled){
-    <app-login (loginEvent)="toggleLogin($event)"></app-login>
+    <app-login (loginEvent)="toggleLogin(isLoginEnabled, $event)" [IsLoginChecked]="isLoginEnabled"></app-login>
   }
   <section class="content">
     <router-outlet></router-outlet>
